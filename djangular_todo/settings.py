@@ -20,6 +20,7 @@ ALLOWED_HOSTS = [os.environ.get('DJANGULAR_TODO_ALLOWED_HOSTS', '127.0.0.1')]
 INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
+    'todo'
 )
 
 MIDDLEWARE_CLASSES = (
