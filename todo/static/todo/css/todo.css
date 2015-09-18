@@ -1,0 +1,152 @@
+/* Making scrollbar always visible */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Actual page styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f6f5f5;
+}
+
+.todo-container {
+  border: 2px #ebebeb solid;
+  background-color: #ffffff;
+  max-width: 500px;
+  margin: 80px auto 0 auto;
+  border-radius: 7px;
+}
+@media screen and (max-height: 675px), screen and (max-width: 700px) {
+  .todo-container {
+    margin: 20px auto 0 auto;
+  }
+}
+.todo-container .header {
+  text-align: center;
+  padding: 28px 0;
+  border-bottom: 1px #cbc9c9 dashed;
+}
+.todo-container .header h1 {
+  font-weight: 700;
+  font-size: 30px;
+}
+.todo-container .input-form {
+  padding: 20px 20px;
+}
+.todo-container .input-form input {
+  border-color: #aeadad;
+  border-width: 1px;
+}
+.todo-container .input-form .form-control {
+  height: 40px;
+  width: 100%;
+}
+.todo-container .input-form .form-group {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .todo-container .input-form .addbtn-group {
+    padding-left: 0;
+  }
+  .todo-container .input-form .todoinput-group {
+    padding-right: 10px;
+  }
+}
+.todo-container .input-form .btn-submit {
+  background: #e8e7e6;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #e8e7e6 0%, #f1f1f1 50%, #e1e1e1 51%, #d5d3d2 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e8e7e6), color-stop(50%, #f1f1f1), color-stop(51%, #e1e1e1), color-stop(100%, #d5d3d2));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #e8e7e6 0%, #f1f1f1 50%, #e1e1e1 51%, #d5d3d2 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #e8e7e6 0%, #f1f1f1 50%, #e1e1e1 51%, #d5d3d2 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #e8e7e6 0%, #f1f1f1 50%, #e1e1e1 51%, #d5d3d2 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #e8e7e6 0%, #f1f1f1 50%, #e1e1e1 51%, #d5d3d2 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e7e6', endColorstr='#d5d3d2', GradientType=0);
+  /* IE6-8 */
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 6px;
+  color: #3d3d3d;
+  padding: 10px 20px 10px 20px;
+  border: solid #8e8e8e 1px;
+  text-decoration: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 100%;
+}
+.todo-container .input-form .btn-submit:hover {
+  background-image: none;
+  background-color: #00aeef;
+  color: #454545;
+}
+.todo-container .footer {
+  height: 53px;
+  line-height: 53px;
+  padding: 0 20px;
+  font-size: 13px;
+}
+.todo-container .footer .all-cnt {
+  display: inline;
+  color: #8e8e8e;
+}
+.todo-container .footer .clear-all {
+  display: inline;
+  text-align: right;
+}
+.todo-container .footer .clear-all .btn {
+  color: #4689c7;
+  font-weight: 400;
+  padding: 0;
+  font-size: 13px;
+  line-height: inherit;
+}
+
+.todos {
+  overflow-y: auto;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  font-weight: 50;
+  height: 275px;
+  border-bottom: 1px #cbc9c9 dashed;
+}
+.todos .todo {
+  padding: 0 22px;
+  line-height: 52px;
+  height: 52px;
+}
+.todos .todo.checked {
+  color: #a6a6a6;
+}
+.todos .todo.checked label {
+  text-decoration: line-through;
+}
+.todos .todo label {
+  font-weight: 200;
+}
+.todos .todo input[type="checkbox"] {
+  /* TODO: fix microplacement of the input */
+  margin: 0 12px 0 0;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  top: 1px;
+}
+.todos .todo:nth-child(odd) {
+  background-color: #f4f7fa;
+}

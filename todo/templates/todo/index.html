@@ -3,20 +3,69 @@
 {% block tittle %}Todo App{% endblock %}
 
 {% block head %}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'todo/css/todo.css' %}" type="text/css">
 {% endblock %}
 
 {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
+
+    <script src="{% static 'todo/js/todo.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-<div id="todoapp" class="container">
-    <section>
+<div id="todoapp" class="container" ng-app="TodoWebApp" data-base-url="{% url 'todo:task-list' %}">
+    {% verbatim %}
+    <section ng-controller="TaskCtrl">
         <div class="todo-container">
             <div class="header">
                 <h1>Todos</h1>
             </div>
+
+            <div class="input-form">
+                <form class="form-inline">
+                    <div class="row">
+                        <div class="col-md-8 todoinput-group">
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="" placeholder="What needs to be done?" ng-model="formTaskText" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 addbtn-group">
+                            <button type="button" class="btn btn-submit" ng-click="addTask()">Add Task</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="body">
+
+                <ul class="todos">
+                    <li class="todo" ng-repeat="task in tasks" ng-class="{checked: task.is_complete}">
+                        <label>
+                            <input type="checkbox" ng-model="task.is_complete" ng-change="updateTask(task)" />
+                            <span>{{task.name}}</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                <div class="row">
+                    <div class="all-cnt col-md-6">
+                        <span>{{getTotalTasks()}}</span>
+                        <span> items left</span>
+                    </div>
+                    <div class="clear-all col-md-6">
+                        <button type="button" class="btn btn-link" ng-click="clearCompleted()">Clear completed</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    {% endverbatim %}
 </div>
 
 {% endblock %}
